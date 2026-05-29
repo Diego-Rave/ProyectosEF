@@ -22,6 +22,7 @@ public class Tareas
 
     [NotMapped]
     public string Resumen {get; set;}
+    
 
 }
 
