@@ -59,4 +59,21 @@ app.MapPut("/api/tareas/{id}", async ([FromServices] TareasContext dbContext, [F
     return Results.NotFound();
 });
 
+// Eliminar una tarea por su ID
+app.MapDelete("/api/tareas/{id}", async ([FromServices] TareasContext dbContext, Guid id) =>
+{
+    var tareaExistente = await dbContext.Tareas.FindAsync(id);
+
+    if (tareaExistente != null)
+    {
+        dbContext.Tareas.Remove(tareaExistente);
+        await dbContext.SaveChangesAsync();
+        return Results.Ok();
+    }
+
+    return Results.NotFound();
+});
+
 app.Run();
+
+
