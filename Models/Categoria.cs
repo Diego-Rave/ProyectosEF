@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace proyectoef.Models;
 
@@ -11,6 +12,8 @@ public class Categoria
     public string Nombre { get; set; }
     public string? Descripcion { get; set; }
     public int? Peso { get; set; }
+    
+    [JsonIgnore]
     public virtual ICollection<Tareas> Tareas { get; set; }
 
 }
